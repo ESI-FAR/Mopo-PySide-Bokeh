@@ -10,14 +10,28 @@ from bokeh.server.server import Server
 from bokeh.themes import Theme
 
 from PySide6.QtCore import Qt, QUrl, QObject, Signal, QRunnable, Slot, QThreadPool
-from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QGroupBox,
-        QMenu, QPushButton, QRadioButton, QVBoxLayout, QWidget, QSlider, QMainWindow)
+from PySide6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QGridLayout,
+    QGroupBox,
+    QMenu,
+    QPushButton,
+    QRadioButton,
+    QVBoxLayout,
+    QWidget,
+    QSlider,
+    QMainWindow,
+)
 from PySide6.QtWebEngineWidgets import QWebEngineView
+
 
 MODEL = sea_surface_temperature.copy()
 
+
 class WorkerSignals(QObject):
     slider_position = Signal(int)
+
 
 class Worker(QRunnable):
     def __init__(self, model, *args, **kwargs):
@@ -34,9 +48,13 @@ class Worker(QRunnable):
     def visualization(self, doc):
         self.doc = doc
 
-        plot = figure(x_axis_type='datetime', y_range=(0, 25), y_axis_label='Temperature (Celsius)',
-                      title="Sea Surface Temperature at 43.18, -70.43")
-        plot.line('time', 'temperature', source=self.source)
+        plot = figure(
+            x_axis_type="datetime",
+            y_range=(0, 25),
+            y_axis_label="Temperature (Celsius)",
+            title="Sea Surface Temperature at 43.18, -70.43",
+        )
+        plot.line("time", "temperature", source=self.source)
 
         doc.add_root(plot)
 
@@ -51,12 +69,12 @@ class Worker(QRunnable):
             self.data = self.df.rolling(f"{self.slider_position}D").mean()
         self.source.data = ColumnDataSource.from_df(self.data)
 
-
     @Slot()
     def run(self):
-        server = Server({'/visualization': self.visualization}, num_procs=1)
+        server = Server({"/visualization": self.visualization}, num_procs=1)
         server.start()
         server.io_loop.start()
+
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -116,7 +134,7 @@ class MainWindow(QMainWindow):
         return groupBox
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec())

@@ -3,8 +3,18 @@
 # Source: https://pythonprogramminglanguage.com/pyqt5-groupbox/
 import sys
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QGroupBox,
-        QMenu, QPushButton, QRadioButton, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QGridLayout,
+    QGroupBox,
+    QMenu,
+    QPushButton,
+    QRadioButton,
+    QVBoxLayout,
+    QWidget,
+)
+
 
 class Window(QWidget):
     def __init__(self, parent=None):
@@ -36,7 +46,8 @@ class Window(QWidget):
 
         return groupBox
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     windowInstance = Window()
     windowInstance.show()

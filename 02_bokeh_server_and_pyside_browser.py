@@ -18,9 +18,13 @@ def bkapp(doc):
     df = sea_surface_temperature.copy()
     source = ColumnDataSource(data=df)
 
-    plot = figure(x_axis_type='datetime', y_range=(0, 25), y_axis_label='Temperature (Celsius)',
-                  title="Sea Surface Temperature at 43.18, -70.43")
-    plot.line('time', 'temperature', source=source)
+    plot = figure(
+        x_axis_type="datetime",
+        y_range=(0, 25),
+        y_axis_label="Temperature (Celsius)",
+        title="Sea Surface Temperature at 43.18, -70.43",
+    )
+    plot.line("time", "temperature", source=source)
 
     def callback(attr, old, new):
         if new == 0:
@@ -30,9 +34,10 @@ def bkapp(doc):
         source.data = ColumnDataSource.from_df(data)
 
     slider = Slider(start=0, end=30, value=0, step=1, title="Smoothing by N Days")
-    slider.on_change('value', callback)
+    slider.on_change("value", callback)
 
     doc.add_root(column(slider, plot))
+
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -42,6 +47,7 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(QUrl("http://localhost:5006/bkapp"))
         self.setCentralWidget(self.browser)
 
+
 def show_window(QApplication, MainWindow):
     app = QApplication()
     window = MainWindow()
@@ -49,11 +55,12 @@ def show_window(QApplication, MainWindow):
 
     app.exec()
 
+
 def start_server(server):
     server.io_loop.start()
 
 
-server = Server({'/bkapp': bkapp}, num_procs=1)
+server = Server({"/bkapp": bkapp}, num_procs=1)
 server.start()
 
 server_thread = threading.Thread(target=start_server, args=(server,))
