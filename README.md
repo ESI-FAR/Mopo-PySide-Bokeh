@@ -2,24 +2,24 @@
 
 ## Files
 
-### ./01_groupbox_test.py
+### ./01_pyside_browser.py
 
 Learn about
 - PySide6 basics
-- `groupbox`es
-
-### ./02_pyside_browser.py
-
-Learn about
 - PySide6 browser
 
-### ./03_bokeh_viz_with_pyside_controls.py
+Based on this [example](https://www.pythonguis.com/faq/qwebengineview-open-links-new-window/) by [Martin Fitzpatrick](https://www.pythonguis.com/authors/martin-fitzpatrick/) under [MIT license](https://mit-license.org/).
+
+### ./02_bokeh_viz_with_pyside_controls.py
 
 Open a Bokeh visualization in a PySide6 browser window and control it with a separate PySide6 `QSlider`.
 
 Learn about
-- PySide6 multithreading with `QThreadpool`
+- `groupbox`es
+- Multithreading with `QThreadpool`
 - PySide6 Signals: `emit` (send) and `connect` (receive)
+
+Based on this [example](https://github.com/bokeh/bokeh/blob/3.3.2/examples/server/api/standalone_embed.py) by [Bokeh](http://bokeh.org/) under [MIT license](https://mit-license.org/).
 
 #### Caveats
 
