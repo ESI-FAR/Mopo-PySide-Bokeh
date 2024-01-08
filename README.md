@@ -1,8 +1,8 @@
 # Run Bokeh Visualization with PySide6 Controls
 
-## Files
+## Scripts
 
-### ./01_pyside_browser.py
+### [01_pyside_browser.py](./01_pyside_browser.py)
 
 Learn about
 - PySide6 basics
@@ -10,7 +10,7 @@ Learn about
 
 Based on this [example](https://www.pythonguis.com/faq/qwebengineview-open-links-new-window/) by [Martin Fitzpatrick](https://www.pythonguis.com/authors/martin-fitzpatrick/) under [MIT license](https://mit-license.org/).
 
-### ./02_bokeh_viz_with_pyside_controls.py
+### [02_bokeh_viz_with_pyside_controls.py](./02_bokeh_viz_with_pyside_controls.py)
 
 Open a Bokeh visualization in a PySide6 browser window and control it with a separate PySide6 `QSlider`.
 
