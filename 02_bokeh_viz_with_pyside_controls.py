@@ -71,9 +71,9 @@ class Worker(QRunnable):
 
     @Slot()
     def run(self):
-        server = Server({"/visualization": self.visualization}, num_procs=1)
-        server.start()
-        server.io_loop.start()
+        self.server = Server({"/visualization": self.visualization}, num_procs=1)
+        self.server.start()
+        self.server.io_loop.start()
 
 
 class MainWindow(QMainWindow):
@@ -134,7 +134,12 @@ class MainWindow(QMainWindow):
         return groupBox
 
 
+def start_and_quit(app, window):
+    app.exec()
+    window.worker.server.io_loop.stop()
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    sys.exit(app.exec())
+    sys.exit(start_and_quit(app, window))

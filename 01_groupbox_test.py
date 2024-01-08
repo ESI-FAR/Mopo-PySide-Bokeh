@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+""" Exploring how PySide6 groupboxes work."""
+
 # Source: https://pythonprogramminglanguage.com/pyqt5-groupbox/
 import sys
 from PySide6.QtCore import Qt
@@ -8,8 +10,6 @@ from PySide6.QtWidgets import (
     QCheckBox,
     QGridLayout,
     QGroupBox,
-    QMenu,
-    QPushButton,
     QRadioButton,
     QVBoxLayout,
     QWidget,
@@ -18,8 +18,9 @@ from PySide6.QtWidgets import (
 
 class Window(QWidget):
     def __init__(self, parent=None):
-        super(Window, self).__init__(parent)
+        super(Window, self).__init__(parent)  # Why is this necessary?
 
+        # Create grid
         grid = QGridLayout()
         grid.addWidget(self.createExampleGroup(), 0, 0)
         grid.addWidget(self.createExampleGroup(), 0, 1)
