@@ -25,3 +25,4 @@ Based on this [example](https://github.com/bokeh/bokeh/blob/3.3.2/examples/serve
 
 - The GUI itself does not run in a background thread
 - The application sometimes takes a while to exit, I don't understand the exact reason. It might have to do with the QThreadpool.
+- I'm not sure if we can control the viewport/content sizes appropriately, e.g. stretch content to fill the viewport without scrollbars.
