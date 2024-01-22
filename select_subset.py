@@ -31,7 +31,7 @@ class WorkerSignals(QObject):
 
     radio_signal = Signal(str)
     resize_signal = Signal(list)
-    viz_ready_signal = Signal(bool)
+    viz_ready_signal = Signal()
 
 
 class Worker(QRunnable):
@@ -59,7 +59,7 @@ class Worker(QRunnable):
         self.doc = doc
         self.plot = mileage_tbl(self.model, self.source)
         doc.add_root(self.plot)
-        self.signals.viz_ready_signal.emit([0, 0])
+        self.signals.viz_ready_signal.emit()
 
     def update(self, subset: str):
         self.subset = subset
@@ -156,7 +156,7 @@ class MainWindow(QMainWindow):
         if sender.isChecked():
             self.worker.signals.radio_signal.emit(sender.text())
 
-    def set_initial_size(self, initial_size):
+    def set_initial_size(self):
         self.worker.signals.resize_signal.emit([self.browser.geometry().width(), self.browser.geometry().height()])
 
     def resizeEvent(self, event):
