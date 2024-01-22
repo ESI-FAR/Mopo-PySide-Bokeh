@@ -3,3 +3,6 @@
 
 # old cruft
 .old
+
+# python
+__pycache__
